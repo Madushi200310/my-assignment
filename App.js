@@ -49,7 +49,7 @@ export default function App() {
             await AsyncStorage.removeItem(PHOTO_URI_KEY);
           }
         }
-      } catch (error) {
+      } catch (_error) {
         Alert.alert(
           'Profile loading issue',
           'Saved profile details could not be loaded. You can continue using the app.'
@@ -69,7 +69,7 @@ export default function App() {
 
     try {
       await AsyncStorage.setItem(POINTS_KEY, String(nextPoints));
-    } catch (error) {
+    } catch (_error) {
       Alert.alert(
         'Points not saved',
         'The point was added for now, but it may not be available after restarting the app.'
@@ -109,7 +109,7 @@ export default function App() {
       await sourceFile.copy(persistentFile);
       await AsyncStorage.setItem(PHOTO_URI_KEY, persistentFile.uri);
       setProfileImageUri(persistentFile.uri);
-    } catch (error) {
+    } catch (_error) {
       Alert.alert(
         'Photo not saved',
         'We could not save that image. Please choose another photo and try again.'
@@ -126,7 +126,7 @@ export default function App() {
       if (await Linking.canOpenURL(emailUrl)) {
         await Linking.openURL(emailUrl);
       }
-    } catch (error) {
+    } catch (_error) {
       Alert.alert('Email unavailable', 'No email app is available on this device.');
     }
   };
